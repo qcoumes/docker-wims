@@ -17,23 +17,15 @@ RUN apt-get install -y --no-install-recommends \
     texlive-base \
     gnuplot \
     build-essential \
-    pari-gp \
-    units-filter \
     flex \
     bison \
     perl \
     liburi-perl \
-    imagemagick \
     libgd-dev \
     wget \
     autoconf ant \
-    yacas \
-    gap \
-    maxima \
-    octave \
-    graphviz \
     ldap-utils \
-    scilab-cli \
+ #   scilab-cli \
     libwebservice-validator-html-w3c-perl \
     qrencode \
     fortune \
