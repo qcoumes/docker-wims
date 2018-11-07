@@ -51,23 +51,10 @@ RUN wget "https://bootstrap.pypa.io/get-pip.py" && \
     python3 get-pip.py
 RUN rm get-pip.py
 
-RUN pip install requests
+RUN pip3 install requests
 
 # Installing Git from source
 RUN apt-get install -y --no-install-recommends git
-
-# Installing povray 3.7 from non-free packet
-RUN echo 'deb http://ftp.fr.debian.org/debian/ oldstable main non-free contrib'  >> /etc/apt/sources.list
-RUN apt-get install -y --no-install-recommends povray=1:3.7.0.0-9+b3
-RUN echo 'read+write* = /home/wims/tmp/sessions'  >> /etc/povray/3.7/povray.conf
-
-# Installing Macaulay2
-RUN echo 'deb https://faculty.math.illinois.edu/Macaulay2/Repositories/Debian stretch main'  >> /etc/apt/sources.list
-RUN wget --no-check-certificate https://faculty.math.illinois.edu/Macaulay2/PublicKeys/Macaulay2-key
-RUN apt-key add Macaulay2-key
-RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-key CD9C0E09B0C780943A1AD85553F8BD99F40DCB31
-RUN apt-get update -q
-RUN apt-get install -y -q macaulay2
 
 # Installing Wims 4.15e
 RUN adduser --disabled-password --gecos "" wims
@@ -78,7 +65,7 @@ RUN sudo chown -R wims:wims .
 RUN wget --no-check-certificate https://sourcesup.renater.fr/frs/download.php/file/5617/wims-4.15e.tgz
 RUN tar xzf wims-4.15e.tgz
 RUN rm wims-4.15e.tgz
-RUN yes 2 | ./compile --mathjax --jmol --modules --geogebra --swac
+RUN yes 2 | ./compile
 USER root
 RUN ./bin/setwrapexec
 RUN ./bin/setwimsd

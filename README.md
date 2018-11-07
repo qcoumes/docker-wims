@@ -44,8 +44,7 @@ git clone https://github.com/ElaadF/docker-wims <directory's path>
 Use this command to build an image from the Dockerfile in this repository. This will take several minutes.   
 ```
 docker build -t <image's name> <Dockerfile's directory>
-```   
->**Note:** The image requires 2.23GB of free space.
+```
 
 ### 4. Run the container
 If the previous step has succed, you have to run the container by creating and starting it with this following command :   
