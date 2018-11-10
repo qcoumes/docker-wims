@@ -6,10 +6,10 @@ ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE 1
 EXPOSE 80
 WORKDIR /home/wims
 
-RUN apt-get -y update
-RUN apt-get -y upgrade
+RUN apt-get -qq -y update
+RUN apt-get -qq -y upgrade
 
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get -qq install -y --no-install-recommends \
     python3 \
     make \
     sudo \
@@ -25,7 +25,6 @@ RUN apt-get install -y --no-install-recommends \
     wget \
     autoconf ant \
     ldap-utils \
- #   scilab-cli \
     libwebservice-validator-html-w3c-perl \
     qrencode \
     fortune \
@@ -57,7 +56,7 @@ RUN sudo chown -R wims:wims .
 RUN wget --no-check-certificate https://sourcesup.renater.fr/frs/download.php/file/5617/wims-4.15e.tgz
 RUN tar xzf wims-4.15e.tgz
 RUN rm wims-4.15e.tgz
-RUN yes 2 | ./compile
+RUN yes 2 | ./compile 1> /dev/null
 USER root
 RUN ./bin/setwrapexec
 RUN ./bin/setwimsd
