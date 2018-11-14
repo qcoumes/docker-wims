@@ -19,6 +19,7 @@ RUN apt-get -qq install -y --no-install-recommends \
     build-essential \
     flex \
     bison \
+    maxima \
     perl \
     liburi-perl \
     libgd-dev \
@@ -47,16 +48,16 @@ RUN pip3 install requests
 # Installing Git from source
 RUN apt-get install -y --no-install-recommends git
 
-# Installing Wims 4.15e
+# Installing Wims 4.17b
 RUN adduser --disabled-password --gecos "" wims
 RUN adduser wims sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER wims
 RUN sudo chown -R wims:wims .
-RUN wget --no-check-certificate https://sourcesup.renater.fr/frs/download.php/file/5617/wims-4.15e.tgz
-RUN tar xzf wims-4.15e.tgz
-RUN rm wims-4.15e.tgz
-RUN yes 2 | ./compile 1> /dev/null
+RUN wget --no-check-certificate https://sourcesup.renater.fr/frs/download.php/file/5685/wims-4.17b.tgz
+RUN tar xzf wims-4.17b.tgz
+RUN rm wims-4.17b.tgz
+RUN yes 2 | ./compile --modules 1> /dev/null
 USER root
 RUN ./bin/setwrapexec
 RUN ./bin/setwimsd
