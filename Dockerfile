@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:latest
 MAINTAINER Elaad FURREEDAN <elaad.f@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
