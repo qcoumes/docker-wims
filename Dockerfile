@@ -1,5 +1,5 @@
 FROM debian:latest
-MAINTAINER Elaad FURREEDAN <elaad.f@gmail.com>
+MAINTAINER Quentin COUMES <coumes.quentin@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE 1
