@@ -39,7 +39,7 @@ RUN apt-get -qq install -y --no-install-recommends \
     systemd
 
 # Installing pip3
-RUN wget "https://bootstrap.pypa.io/get-pip.py" && \
+RUN wget -d "https://bootstrap.pypa.io/get-pip.py" && \
     python3 get-pip.py
 RUN rm get-pip.py
 
