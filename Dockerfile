@@ -36,7 +36,9 @@ RUN apt-get -qq install -y --no-install-recommends \
     gnupg2 \
     dirmngr \
     apache2 \
-    systemd
+    systemd \
+    subversion \
+    imagemagick
 
 # Installing pip3
 RUN wget -d "https://bootstrap.pypa.io/get-pip.py" && \
@@ -55,10 +57,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER wims
 RUN sudo chown -R wims:wims .
-RUN wget --no-check-certificate https://sourcesup.renater.fr/frs/download.php/latestzip/531/wimsdev-latest.zip
-RUN unzip wimsdev-latest.zip
-RUN tar xzf wims*.tgz
-RUN rm wims*.tgz
+RUN svn checkout https://subversion.renater.fr/wimsdev/trunk/wims/ .
 RUN yes 2 | ./compile --modules 1> /dev/null
 
 USER root
