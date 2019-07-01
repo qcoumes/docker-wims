@@ -57,7 +57,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER wims
 RUN sudo chown -R wims:wims .
-RUN svn checkout https://subversion.renater.fr/wimsdev/trunk/wims/ .
+RUN svn checkout https://subversion.renater.fr/anonscm/svn/wimsdev/trunk/wims/ .
 RUN yes 2 | ./compile --modules 1> /dev/null
 
 USER root
