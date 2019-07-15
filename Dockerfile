@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:stretch
 MAINTAINER Quentin COUMES <coumes.quentin@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
