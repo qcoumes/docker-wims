@@ -15,25 +15,6 @@ First of all you have to install Docker, please follow these instructions :
 + [OSX](https://docs.docker.com/docker-for-mac/install/)
 + [Windows](https://docs.docker.com/docker-for-windows/install/)
 
-TL;TR for Debian :   
-*Install using the repository method*
-```
-sudo apt-get remove docker docker-engine docker.io
-sudo apt-get update
-sudo apt-get install \
-     apt-transport-https \
-     ca-certificates \
-     curl \
-     gnupg2 \
-     software-properties-common
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-   $(lsb_release -cs) \
-   stable"
-sudo apt-get install docker-ce  
- ```
-
 ### 2. Clone this repository
 ```
 git clone https://github.com/ElaadF/docker-wims <directory's path>
