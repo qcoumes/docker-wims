@@ -38,7 +38,8 @@ RUN apt-get -qq install -y --no-install-recommends \
     apache2 \
     systemd \
     subversion \
-    imagemagick
+    imagemagick \
+    openjdk-8-jdk
 
 # Installing pip3
 RUN wget -d "https://bootstrap.pypa.io/get-pip.py" && \
