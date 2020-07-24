@@ -1,0 +1,38 @@
+name: Docker
+
+on:
+  schedule:
+    - cron:  '0 6 * * 1'
+
+jobs:
+  # Run tests.
+  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: |
+          if [ -f docker-compose.test.yml ]; then
+            docker-compose --file docker-compose.test.yml build
+            docker-compose --file docker-compose.test.yml run sut
+          else
+            docker build . --file Dockerfile
+          fi
+
+  # Send a post request to docker API to trigger a new build from master 
+  push:
+    # Ensure test job passes before pushing image.
+    needs: test
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Trigger build
+        
+      - uses: fjogeleit/http-request-action@master
+        with:
+            url: 'https://hub.docker.com/api/build/v1/source/d12eaa7d-a069-4953-a4a3-b23b812d5423/trigger/ab0b6e16-9d70-46e6-8593-c96e8ca3aa77/call/'
+            method: 'POST'
