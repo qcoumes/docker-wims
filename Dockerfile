@@ -51,14 +51,16 @@ RUN pip3 install requests
 # Installing Git from source
 RUN apt-get install -y --no-install-recommends git
 
-# Installing Wims 4.17c
+# Installing Wims
 RUN adduser --disabled-password --gecos "" wims
 RUN adduser wims sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER wims
 RUN sudo chown -R wims:wims .
-RUN svn checkout https://subversion.renater.fr/anonscm/svn/wimsdev/trunk/wims/ .
+RUN wget --no-check-certificate https://sourcesup.renater.fr/frs/download.php/file/5883/wims-4.19a.tgz
+RUN tar xzf wims-4.19a.tgz
+RUN rm wims-4.19a.tgz
 RUN yes 2 | ./compile --modules 1> /dev/null
 
 USER root
