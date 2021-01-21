@@ -58,9 +58,9 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER wims
 RUN sudo chown -R wims:wims .
-RUN wget --no-check-certificate https://sourcesup.renater.fr/frs/download.php/file/6160/wims-4.20.tgz
-RUN tar xzf wims-4.20.tgz
-RUN rm wims-4.20.tgz
+RUN wget --no-check-certificate https://sourcesup.renater.fr/frs/download.php/file/6191/wims-4.21a.tgz
+RUN tar xzf wims-4.21a.tgz
+RUN rm wims-4.21a.tgz
 RUN yes 2 | ./compile --modules 1> /dev/null
 
 USER root
